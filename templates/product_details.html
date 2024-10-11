@@ -1,0 +1,87 @@
+{% extends './layout.html' %}
+
+{% block body %}
+
+<style>
+    :root {
+            --techcare-red: #e31837;
+            --techcare-dark: #333333;
+        }
+    .product-title {
+            color: var(--techcare-red);
+            font-weight: bold;
+        }
+        .btn-techcare {
+            background-color: var(--techcare-red);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+        }
+        .btn-techcare:hover {
+            background-color: #c41530;
+            color: white;
+        }
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .gallery-item {
+            flex: 0 0 calc(33.333% - 10px);
+            cursor: pointer;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+        #main-image {
+            width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 20px;
+
+        }
+</style>
+
+
+<div class="container" style="margin-bottom: 50px; margin-top: 50px;">
+    <div class="row">
+        <div class="col-md-6" style="background-color: rgba(109, 88, 88, 0.10);padding: 20px;border-radius: 30px;">
+            <img id="main-image" src="{{ url_for('static', filename='uploads/' + product.card_image) }}" alt="{{ product.name }}">
+            <div class="gallery-container">
+                <div class="gallery-item">
+                    <img src="{{ url_for('static', filename='uploads/' + product.card_image) }}" alt="{{ product.name }}" onclick="changeMainImage(this.src)">
+                </div>
+                {% for image in images %}
+                <div class="gallery-item">
+                    <img src="{{ url_for('static', filename='uploads/' + image) }}" alt="{{ product.name }}" onclick="changeMainImage(this.src)">
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h1 class="product-title">{{ product.name }}</h1>
+            <p class="text-muted">{{ product.type.name }}</p>
+            <h2>${{ product.price }}</h2>
+            <p style="font-size: 20px; margin-top: 20px;">{{ product.description }}</p>
+            <h3></h3>
+            <!-- <ul>
+                {% for feature in product.features %}
+                <li>{{ feature }}</li>
+                {% endfor %}
+            </ul> -->
+            <button class="btn btn-techcare mt-3">შეძენა</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    function changeMainImage(src) {
+        document.getElementById('main-image').src = src;
+    }
+</script>
+{% endblock %}

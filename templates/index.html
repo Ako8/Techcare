@@ -1,0 +1,163 @@
+{% extends './layout.html' %}
+
+{% block body %}
+		<!-- SECTION -->
+		<div class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<!-- shop -->
+					{% for product_type in product_types %}
+            		<div class="col-md-4 col-xs-6">
+                		<div class="shop">
+							<div class="shop-img">
+								<img src="{{ url_for('static', filename='uploads/' + product_type.image) }}" alt="{{ product_type.name }}">
+							</div>
+							<div class="shop-body">
+								<h3>{{ product_type.name }}</h3>
+							</div>
+							<div class="add-to-cart">
+								<button style="display: inline-block;" class="add-to-cart-btn">ყიდვა</button>
+								<button style="display: inline-block;" class="add-to-cart-btn">შეკეთება</button>
+							</div>
+                		</div>
+            		</div>
+            		{% endfor %}
+					<!-- /shop -->
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /SECTION -->
+
+		<!-- HOT DEAL SECTION -->
+		<div id="hot-deal" class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<div class="col-md-12">
+						<div class="hot-deal">
+							<h2 class="text-uppercase">დაურეკე ტექნიკოსს და უმალვე შეგიკეთებს ტექნიკას</h2>
+							<p>სწრაფი სერვისი!</p>
+							<a class="primary-btn cta-btn" href="#">დარეკვა</a>
+						</div>
+					</div>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /HOT DEAL SECTION -->
+
+		<!-- SECTION -->
+		<div class="section" id="appliances">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+
+					<!-- section title -->
+					<div class="col-md-12">
+						<div class="section-title">
+							<h3 class="title" >საყოფაცხოვრებო ტექნიკა</h3>
+							<div class="section-nav">
+								<ul class="section-tab-nav tab-nav">
+									<li><a href="#" data-type="all" class="product-type-filter active">ყველა</a></li>
+									{% for product_type in product_types %}
+										<li><a data-type="{{ product_type.name }}" class="product-type-filter">{{ product_type.name }}</a></li>
+									{% endfor %}
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- /section title -->
+
+					<!-- Products tab & slick -->
+					<div class="col-md-12">
+						<div class="row">
+							<div class="products-tabs">
+								<!-- tab -->
+								<div id="tab1" class="tab-pane active">
+									<div class="products-slick">
+											{% for product in products %}
+											<!-- product -->
+											<div class="product" data-type="{{ product.type.name }}">
+												<div class="product-img">
+													<img src="{{ url_for('static', filename='uploads/' + product.card_image) }}" alt="">
+													<!-- <div class="product-label">
+														<span class="sale">-30%</span>
+														<span class="new">NEW</span>
+													</div> -->
+												</div>
+												<div class="product-body">
+													<p class="product-category">{{ product.type.name }} </p>
+													<h3 class="product-name"><a href="#">{{product.name}}</a></h3>
+													<h4 class="product-price">${{ product.price }}</h4>
+												</div>
+												<div class="add-to-cart" style="border-radius: 0px 00px 10px 10px;">
+													<a href="{{ url_for('product_details', id=product.id) }}" class="add-to-cart-btn" style="padding: 10px;">დეტალები</a>
+												</div>
+											</div>
+											<!-- /product -->
+											{% endfor  %}
+									</div>
+									<div id="slick-nav-1" class="products-slick-nav"></div>
+								</div>
+								<!-- /tab -->
+							</div>
+						</div>
+					</div>
+					<!-- Products tab & slick -->
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /SECTION -->
+
+		
+
+		<!-- NEWSLETTER -->
+		<div id="newsletter" class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<div class="col-md-12">
+						<div class="newsletter">
+							<p>რაიმე გაინტერესებს? <strong>გვკითხე</strong></p>
+							<form>
+								<div>
+									<input class="input" type="email" placeholder="ელ.ფოსტა">
+									<textarea class="com-input" placeholder="კომენტარი..."></textarea>
+									
+								</div>
+								<button class="newsletter-btn">კომენტარი</button>
+							</form>
+							<ul class="newsletter-follow">
+								<li>
+									<a href="#"><i class="fa fa-facebook"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="fa fa-instagram"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="fa fa-pinterest"></i></a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /NEWSLETTER -->
+
+{% endblock %}

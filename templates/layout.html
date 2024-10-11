@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		
+        <title>Techcare.ge</title>
+     
+        <!-- Google font -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+    
+        <!-- Bootstrap -->
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+
+        <!-- Slick -->
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/slick.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/slick-theme.css') }}">
+
+        <!-- nouislider -->
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/nouislider.min.css') }}">
+
+        <!-- Font Awesome Icon -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
+
+        <!-- Custom stlylesheet -->
+<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        
+    </head>
+    <body>
+		<!-- HEADER -->
+		<header>
+			<!-- TOP HEADER -->
+			<div id="top-header">
+				<div class="container">
+					<ul class="header-links pull-left">
+						<li><a href="#"><i class="fa fa-phone"></i> +021-95-51-84</a></li>
+						<li><a href="#"><i class="fa fa-envelope-o"></i> <span class="__cf_email__" data-cfemail="c3a6aea2aaaf83a6aea2aaafeda0acae">[email&#160;protected]</span></a></li>
+						<li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Zestafoni</a></li>
+					</ul>
+					<ul class="header-links pull-right">
+						<li><a href="#"><i class="fa fa-dollar"></i> GEL</a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- /TOP HEADER -->
+
+			<!-- MAIN HEADER -->
+<div id="header">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row align-items-center">
+            <!-- LOGO -->
+            <div class="col-md-3">
+                <div class="header-logo">
+                    <a href="{{ url_for('index') }}" class="logo">
+						<img src="{{ url_for('static', filename='/uploads/462557134_2220803258302162_2111058756597164828_n.png') }}" alt="">
+                    </a>
+                </div>
+            </div>
+            <!-- /LOGO -->
+
+            <!-- SEARCH BAR -->
+            <div class="col-md-6 mx-auto">
+                <div class="header-search">
+                    <form class="d-flex justify-content-center">
+                        <input class="input" placeholder="მოძებნე აქ" style="width: 70%;">
+                        <button class="search-btn">ძებნა</button>
+                    </form>
+                </div>
+            </div>
+            <!-- /SEARCH BAR -->
+
+            <!-- Empty column for balance -->
+            <div class="col-md-3">
+			</div>
+        </div>
+        <!-- row -->
+    </div>
+    <!-- container -->
+</div>
+<!-- /MAIN HEADER -->
+		</header>
+		<!-- /HEADER -->
+
+		<!-- NAVIGATION -->
+		<nav id="navigation">
+			<!-- container -->
+			<div class="container">
+				<!-- responsive-nav -->
+				<div id="responsive-nav">
+					<!-- NAV -->
+					<ul class="main-nav nav navbar-nav">
+						<li class="active"><a href="{{ url_for('index') }}">მთავარი</a></li>
+						{% for product_type in product_types %}
+							<li><a href="#appliances">{{ product_type.name }}</a></li>
+						{% endfor %}
+					</ul>
+					<!-- /NAV -->
+				</div>
+				<!-- /responsive-nav -->
+			</div>
+			<!-- /container -->
+		</nav>
+		<!-- /NAVIGATION -->
+
+        {% block body %}
+
+        {% endblock %}
+        		<!-- FOOTER -->
+		<footer id="footer">
+			<!-- top footer -->
+			<div class="section">
+				<!-- container -->
+				<div class="container">
+					<!-- row -->
+					<div class="row">
+						<div class="col-md-3 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">ჩვენს შესახებ</h3>
+								<p>სერვისი, რომელიც უმალვე შეაკეთებს სახლის ტექნიკას ან შემოგთავაზებს ახალს საუკეთესო ფასად</p>
+								<ul class="footer-links">
+									<li><a href="#"><i class="fa fa-map-marker"></i>კვალითის 32</a></li>
+									<li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
+									<li><a href="#"><i class="fa fa-envelope-o"></i><span class="__cf_email__" data-cfemail="1d78707c74715d78707c7471337e7270">[email&#160;protected]</span></a></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="col-md-3 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">კატეგორიები</h3>
+								<ul class="footer-links">
+									{% for product_type in product_types %}
+									<li><a href="#">{{ product_type.name  }}</a></li>
+									{% endfor %}
+								</ul>
+							</div>
+						</div>
+
+						<div class="clearfix visible-xs"></div>
+
+						<div class="col-md-3 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">ინფორმაცია</h3>
+								<ul class="footer-links">
+									<li><a href="#">ჩვენს შესახებ</a></li>
+									<li><a href="#">დაგვიკავშირდით</a></li>
+									<li><a href="#">წესები და პირობები</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- /row -->
+				</div>
+				<!-- /container -->
+			</div>
+			<!-- /top footer -->
+
+			<!-- bottom footer -->
+			<div id="bottom-footer" class="section">
+				<div class="container">
+					<!-- row -->
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<span class="copyright">
+								Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with by <a href="https://Techcare.ge" target="_blank">Techcare</a>
+							</span>
+						</div>
+					</div>
+						<!-- /row -->
+				</div>
+				<!-- /container -->
+			</div>
+			<!-- /bottom footer -->
+		</footer>
+		<!-- /FOOTER -->
+
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+		<!-- jQuery Plugins -->
+		<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/slick.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/nouislider.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/jquery.zoom.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+		
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23581568-13');
+</script>
+	<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"8ccfda63fc80959d","serverTiming":{"name":{"cfExtPri":true,"cfL4":true}},"version":"2024.8.0","token":"cd0b4b3a733644fc843ef0b185f98241"}' crossorigin="anonymous"></script>
+</body>
+</html>
